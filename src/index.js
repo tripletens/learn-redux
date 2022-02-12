@@ -3,10 +3,32 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import bootstrap from 'bootstrap';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import { Provider } from 'react-redux';
+import StoreConfig from './store/ConfigStore';
+
+const ProviderComponent = () => {
+  const store = StoreConfig();
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ProviderComponent />
+    ,
+    {/* <App /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
